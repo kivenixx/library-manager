@@ -1,4 +1,6 @@
 from models.book import Book
+from services.storage import File
+
 
 book_list = []
 
@@ -44,8 +46,8 @@ while True:
 
         school_required = resp_school_required == "t"
 
-        b1 = Book(author, title, year, length, font_size, weight, school_required)
-        book_list.append(b1)
+        book_obj = Book(author, title, year, length, font_size, weight, school_required)
+        book_list.append(book_obj)
 
     elif resp_menu == "2":
         if book_list:
@@ -54,10 +56,8 @@ while True:
         else:
             print("Lista książek jest pusta.")
     elif resp_menu == "3":
-        pass
-        #zapisz
+        File.save(book_list)
     elif resp_menu == "4":
-        pass
-        #wczytaj
+        book_list = File.load()
     else:
         print("Wprowadź liczbę od 1 do 4.")
