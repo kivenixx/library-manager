@@ -55,8 +55,13 @@ while True:
                 book.display()
         else:
             print("Lista książek jest pusta.")
+
     elif resp_menu == "3":
-        File.save(book_list)
+        if book_list:
+            File.save(book_list)
+        else:
+            print("Brak danych do zapisania.")
+
     elif resp_menu == "4":
         book_list = File.load()
     else:
