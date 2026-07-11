@@ -1,3 +1,5 @@
+from models.book import Book
+book_list = []
 while True:
     print(
         "\n1. Dodaj książkę\n"
@@ -9,11 +11,14 @@ while True:
     resp = input()
 
     if resp == "1":
-        pass
-        #dodaj
+        b1 = Book()
+        book_list.append(b1)
     elif resp == "2":
-        pass
-        #wyswietl
+        if book_list:
+            for book in book_list:
+                book.display()
+        else:
+            print("Lista książek jest pusta.")
     elif resp == "3":
         pass
         #zapisz
