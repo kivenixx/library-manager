@@ -63,6 +63,9 @@ while True:
             print("Brak danych do zapisania.")
 
     elif resp_menu == "4":
-        book_list = File.load()
+        try:
+            book_list = File.load()
+        except FileNotFoundError:
+            print("Nie znaleziono pliku z książkami.")
     else:
         print("Wprowadź liczbę od 1 do 4.")
