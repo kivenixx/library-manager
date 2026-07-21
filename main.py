@@ -2,26 +2,27 @@ from models.book import Book
 from services.storage import File
 
 
-book_list = []
+book_list: list[Book] = []
 
-def validation(message, var_type):
+def validate_int(message: str) -> int:
     while True:
         resp_value = input(message)
-
         try:
-            if var_type == "i":
-                attribute = int(resp_value)
-            elif var_type == "f":
-                attribute = float(resp_value)
-            else:
-                raise SystemExit("Error: Variable type not allowed.")
-            return attribute
+            return int(resp_value)
         except ValueError:
             print("Podana wartość nie jest liczbą całkowitą.")
 
+def validate_float(message: str) -> float:
+    while True:
+        resp_value = input(message)
+        try:
+            return float(resp_value)
+        except ValueError:
+            print("Podana wartość nie jest liczbą.")
+
+
 while True:
     print(
-        "\n"
         "1. Dodaj książkę\n"
         "2. Wyświetl książki\n"
         "3. Zapisz do JSON\n"
@@ -34,10 +35,10 @@ while True:
         author = input("Podaj autora: ")
         title = input("Podaj tytuł: ")
 
-        year = validation("Podaj rok wydania: ", "i")
-        length = validation("Podaj ilość stron: ", "i")
-        font_size = validation("Podaj wielkość czcionki: ", "f")
-        weight = validation("Podaj wagę: ", "f")
+        year: int = validate_int("Podaj rok wydania: ")
+        length = validate_int("Podaj ilość stron: ")
+        font_size = validate_float("Podaj wielkość czcionki: ")
+        weight = validate_float("Podaj wagę: ")
 
         while True:
             resp_school_required = input("Czy jest lekturą szkolną (t/n): ").lower()

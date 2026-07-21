@@ -1,5 +1,13 @@
 class Book:
-    def __init__(self, author, title, year, length, font_size, weight, school_required):
+    author: str
+    title: str
+    year: int
+    length: int
+    font_size: float
+    weight: float
+    school_required: bool
+    
+    def __init__(self, author: str, title: str, year: int, length: int, font_size: float, weight: float, school_required: bool) -> None:
         self.author = author
         self.title = title
         self.year = year
@@ -9,7 +17,7 @@ class Book:
         self.school_required = school_required
 
 
-    def display(self):
+    def display(self) -> None:
         print(
             "\n"
             f"Autor: {self.author}\n"

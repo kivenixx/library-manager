@@ -4,7 +4,7 @@ from models.book import Book
 
 class File:
     @staticmethod
-    def save(book_list):
+    def save(book_list) -> None:
         book_list_dict = []
         for book in book_list:
             book_list_dict.append(book.__dict__)
@@ -12,7 +12,7 @@ class File:
             json.dump(book_list_dict, f, indent=4)
 
     @staticmethod
-    def load():
+    def load() -> list[Book]:
         book_list_new = []
         with open("books.json") as f:
             book_list_dict = json.load(f)
